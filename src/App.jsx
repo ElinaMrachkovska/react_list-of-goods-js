@@ -99,7 +99,7 @@ export const App = () => {
 
       <ul>
         {visibleGoods.map(good => (
-          <li key={good}>
+          <li key={good} data-cy="Good">
             <button
               type="button"
               className={`button is-small ${
