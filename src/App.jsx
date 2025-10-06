@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import 'bulma/css/bulma.css';
-import './App.scss';
 
 export const goodsFromServer = [
   'Dumplings',
@@ -18,23 +16,24 @@ export const goodsFromServer = [
 export const App = () => {
   const [sortBy, setSortBy] = useState('');
   const [goods] = useState(goodsFromServer);
-  const [reversBy, setReversBy] = useState(false);
+
+  const [reversed, setReversed] = useState(false);
   const [selectedGoods, setSelectedGoods] = useState([]);
 
-  const isDefaultOrder = sortBy === '' && reversBy === false;
+  const isDefaultOrder = sortBy === '' && reversed === false;
 
   const handleSetSort = field => {
+    setReversed(false);
     setSortBy(field);
-    setReversBy(false);
   };
 
   const handleReverseSort = () => {
-    setReversBy(current => !current);
+    setReversed(current => !current);
   };
 
   const handleResetSort = () => {
     setSortBy('');
-    setReversBy(false);
+    setReversed(false);
   };
 
   const handleSelectGoods = good => {
@@ -55,7 +54,7 @@ export const App = () => {
     visibleGoods.sort((a, b) => a.length - b.length);
   }
 
-  if (reversBy) {
+  if (reversed) {
     visibleGoods.reverse();
   }
 
@@ -67,7 +66,7 @@ export const App = () => {
           className={`button is-info ${sortBy === 'name' ? '' : 'is-light'}`}
           onClick={() => handleSetSort('name')}
         >
-         Sort alphabetically
+          Sort alphabetically
         </button>
 
         <button
@@ -80,7 +79,7 @@ export const App = () => {
 
         <button
           type="button"
-          className={`button is-warning ${reversBy ? '' : 'is-light'}`}
+          className={`button is-warning ${reversed ? '' : 'is-light'}`}
           onClick={handleReverseSort}
         >
           Reverse
@@ -115,3 +114,5 @@ export const App = () => {
     </div>
   );
 };
+
+export default App;
