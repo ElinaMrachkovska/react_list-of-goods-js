@@ -51,7 +51,7 @@ export const App = () => {
   if (sortBy === 'name') {
     visibleGoods.sort((a, b) => a.localeCompare(b));
   } else if (sortBy === 'length') {
-    visibleGoods.sort((a, b) => a.length - b.length);
+    visibleGoods.sort((a, b) => a.length - b.length || a.localeCompare(b));
   }
 
   if (reversed) {
