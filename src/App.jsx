@@ -67,7 +67,7 @@ export const App = () => {
           className={`button is-info ${sortBy === 'name' ? '' : 'is-light'}`}
           onClick={() => handleSetSort('name')}
         >
-          Alfa
+         Sort alphabetically
         </button>
 
         <button
